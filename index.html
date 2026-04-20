@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You Clicker</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    touch-action: manipulation;
+}
+
+#score {
+    font-size: 4em;
+    margin-bottom: 30px;
+}
+
+button {
+    width: 80vw;
+    height: 25vh;
+    font-size: 2em;
+    border: none;
+    border-radius: 20px;
+    background: #ff4757;
+    color: white;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+</style>
+</head>
+
+<body>
+
+<div id="score">0</div>
+
+<button id="btn">THANK YOU</button>
+
+<audio id="sound" src="thankyou.mp3" preload="auto"></audio>
+
+<script>
+let score = 0;
+const btn = document.getElementById("btn");
+const sound = document.getElementById("sound");
+
+btn.addEventListener("click", klik);
+btn.addEventListener("touchstart", klik); // lepší reakce na mobilu
+
+function klik() {
+    score++;
+    document.getElementById("score").innerText = score;
+
+    sound.currentTime = 0;
+    sound.play().catch(() => {});
+}
+</script>
+
+</body>
+</html>
